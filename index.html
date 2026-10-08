@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cek Kodam</title>
+
+  <style>
+    body {
+      background: #111;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      padding-top: 80px;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #hasil {
+      font-size: 24px;
+      margin-top: 30px;
+      color: cyan;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🔮 CEK KHODAM 🔮</h1>
+
+  <p>Masukkan nama kamu:</p>
+
+  <input id="nama" placeholder="Nama...">
+
+  <button onclick="cekKhodam()">CEK</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const khodam = [
+      "Yanto Maling Kancut",
+      "Bambang Bakso Beranak",
+      "Sugeng Macaroni Sinyo",
+      "Mulyono Seblak Level Death",
+      "Dedi Cilor Sakti",
+      "Toto Cendol Dawet",
+      "Joko Nasi Padang",
+      "Herman Kerupuk Melempem",
+      "Supri Teh Manis Anget",
+      "Agus Gorengan Garing",
+      "Udin Indomie Kuah",
+      "Heru Es Kepal Milo",
+      "Edi Batagor Tanpa Bumbu",
+      "Yadi Cimol Meledak",
+      "Wawan Onde-Onde Kurang Wijen",
+      "Rudi Kopi Hitam Kembung",
+      "Gatot Pecel Lele",
+      "Nanang Martabak Manis",
+      "Slamet Kue Putu",
+      "Dono Krupuk Kulit Nyelip",
+      "Hendro Ayam Geprek",
+      "Budi Sambal Terasi",
+      "Eko Sate Padang",
+      "Cecep Kolak Pisang",
+      "Asep Bubur Diaduk",
+      "Tejo Cireng Karet",
+      "Tono Kipas Angin Geleng-Geleng",
+      "Anwar Sapu Lidi Patah",
+      "Dadang Magic Com Warm",
+      "Kusno Gayung Bolong",
+      "Suwito Keset Welcome",
+      "Didik Token Listrik Sekarat",
+      "Rahmat Remote TV Hilang",
+      "Sony Gantungan Baju Bengkok",
+      "Teguh Colokan Longgar",
+      "Yono Tutup Toples Peyot",
+      "Wahyudi Ulekan Batu",
+      "Paijo Ember Bocor Alus",
+      "Soleh Kasur Kapuk Kempes",
+      "Roni Guling Tanpa Sarung",
+      "Toni Wajan Gosong Estetik",
+      "Darsno Bohlam Lampu Disko",
+      "Umar Jepitan Jemuran",
+      "Imron Gunting Kuku Tumpul",
+      "Basuki Payung Lipat Terbalik",
+      "Yatno Termos Air Dingin",
+      "Komar Keset Kamar Mandi",
+      "Jumadi Paku Karatan",
+      "Kardi Korek Api Gas Abis",
+      "Purnomo Gembok Karatan",
+      "Sutrisno Timbangan Badan Rusak",
+      "Suroso Syamsoe Begadang",
+      "Hartono Buaya Darat Insyaf",
+      "Pujo Pria Tersenyum Ramah",
+      "Tarjo Kang Parkir Gaib",
+      "Misnan Beban Keluarga Premium",
+      "Ponimin Sad Boy Subuh",
+      "Karsiman Fomo Akut",
+      "Supriyadi Mba-Mba SCBD",
+      "Darsono Kang Ghibah Kompleks",
+      "Margono Suhu Healing",
+      "Kusnadi Introvert Akut",
+      "Sukimin Asisten Kurir Paket",
+      "Paiman Admin Pinjol Galak",
+      "Trisno Jamet Kuproy",
+      "Sutopo Anak Senja",
+      "Minto Kang Ghosting",
+      "Kusno Spesialis Salah Paham",
+      "Jarot Raja Ngeles",
+      "Pardi Pawang Hujan Libur",
+      "Subarjo Pengagum Rahasia",
+      "Karno Dukun Cari Jodoh",
+      "Dahlan Gadis Kretek Batuk",
+      "Sukatno Ratu Drama Korea",
+      "Wiyono Master Overthinking",
+      "Suwandi Aktivis Rebahan",
+      "Haryono WiFi Lemot",
+      "Sujono Kuota Habis",
+      "Sukarman Laba-Laba Sundel Bolong",
+      "Parto Nyi Roro Kidul Cosplay",
+      "Samidi Tuyul Dompet Digital",
+      "Kusairi Zombie Kurang Ngopi",
+      "Mursid Kuntilanak Sinden",
+      "Joni Pocong Aesthetic",
+      "Soni Genderuwo Glow Up",
+      "Darto Hp Lowbat",
+      "Kliwon Notifikasi Kosong",
+      "Legiman Algoritma TikTok Rusak",
+      "Paimin Spam Chat Mantan",
+      "Sutoyo Kamera Depan Jahat",
+      "Drajat Filter Selebgram",
+      "Slamet Riyadi Grup WA Sepi",
+      "Sarkowi Pangeran Blue Screen",
+      "Wito Ksatria Centang Biru",
+      "Karno Siluman Mouse Delay",
+      "Joko Pocong Pake Helm",
+      "Yanto Kuntilanak Jedag-Jedug",
+      "Budi Bapak-Bapak Share Link",
+      "Agus Ketua Kelas Tagih Kas",
+      "Mulyono Sinyal E Abadi"
+    ];
+
+    function cekKhodam() {
+      let nama = document.getElementById("nama").value;
+
+      if (nama.trim() === "") {
+        document.getElementById("hasil").innerHTML =
+          "Masukkan nama dulu jir 😭";
+        return;
+      }
+
+      let acak = Math.floor(Math.random() * khodam.length);
+
+      document.getElementById("hasil").innerHTML =
+        nama + ", khodammu adalah...<br><br>🔥 " + khodam[acak] + " 🔥";
+    }
+  </script>
+
+</body>
+    </html>
